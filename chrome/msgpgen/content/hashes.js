@@ -301,30 +301,30 @@ hashes.sha1=function(x, len) {
 		if(t < 60) return (b & c) | (b & d) | (c & d);
 		return b ^ c ^ d;
 	};
-	
+
 	/* Determine the appropriate additivebit_rol constant for the current iteration	*/
 	function kt(t) {
 		return (t < 20) ?  1518500249 : (t < 40) ?  1859775393 :
 		(t < 60) ? -1894007588 : -899497514;
-	}		
+	}
 	/* append padding */
 	x[len >> 5] |= 0x80 << (24 - len & 31);
 	x[((len + 64 >> 9) << 4) + 15] = len;
-	
+
 	var w = Array(80);
 	var a =  1732584193;
 	var b = -271733879;
 	var c = -1732584194;
 	var d =  271733878;
 	var e = -1009589776;
-	
+
 	for(var i = 0; i < x.length; i += 16){
 		var olda = a;
 		var oldb = b;
 		var oldc = c;
 		var oldd = d;
 		var olde = e;
-		
+
 		for(var j = 0; j < 80; j++) {
 			if(j < 16) w[j] = x[i + j];
 			else w[j] = bit_rol(w[j-3] ^ w[j-8] ^ w[j-14] ^ w[j-16], 1);
@@ -336,7 +336,7 @@ hashes.sha1=function(x, len) {
 			b = a;
 			a = t;
 		}
-		
+
 		a = add(a, olda);
 		b = add(b, oldb);
 		c = add(c, oldc);
@@ -505,7 +505,7 @@ hashes.sha256=function(m, l){
 };
 
 hashes.md5=function(x, len) {
-	
+
 	/* Make the function use big-endian */
 	function binl2binb(l){
 		var b=[];
@@ -514,35 +514,35 @@ hashes.md5=function(x, len) {
 		}
 		return b;
 	}
-	
+
 	/* These functions implement the four basic operations the algorithm uses. */
-	function cmn(q, a, b, x, s, t) 
+	function cmn(q, a, b, x, s, t)
 	{return add(bit_rol(add(add(a, q), add(x, t)), s),b);}
-	
+
 	function ff(a, b, c, d, x, s, t)
 	{return cmn((b & c) | ((~b) & d), a, b, x, s, t); }
-	
+
 	function gg(a, b, c, d, x, s, t)
 	{return cmn((b & d) | (c & (~d)), a, b, x, s, t); }
-	
+
 	function hh(a, b, c, d, x, s, t)
 	{return cmn(b ^ c ^ d, a, b, x, s, t);	}
-	
+
 	function ii(a, b, c, d, x, s, t)
 	{return cmn(c ^ (b | (~d)), a, b, x, s, t); }
-	
+
 	/* convert endianess */
 	x=binl2binb(x);
 
 	/* append padding */
 	x[len >> 5] |= 0x80 << ((len) & 31);
 	x[(((len + 64) >>> 9) << 4) + 14] = len;
-	
+
 	var a =  1732584193;
 	var b = -271733879;
 	var c = -1732584194;
 	var d =  271733878;
-	
+
 	for(var i = 0; i < x.length; i += 16)
 	{
 		var olda = a;
@@ -565,7 +565,7 @@ hashes.md5=function(x, len) {
 		d = ff(d, a, b, c, x[i+13], 12, -40341101);
 		c = ff(c, d, a, b, x[i+14], 17, -1502002290);
 		b = ff(b, c, d, a, x[i+15], 22,  1236535329);
-		
+
 		a = gg(a, b, c, d, x[i+ 1], 5 , -165796510);
 		d = gg(d, a, b, c, x[i+ 6], 9 , -1069501632);
 		c = gg(c, d, a, b, x[i+11], 14,  643717713);
@@ -582,7 +582,7 @@ hashes.md5=function(x, len) {
 		d = gg(d, a, b, c, x[i+ 2], 9 , -51403784);
 		c = gg(c, d, a, b, x[i+ 7], 14,  1735328473);
 		b = gg(b, c, d, a, x[i+12], 20, -1926607734);
-		
+
 		a = hh(a, b, c, d, x[i+ 5], 4 , -378558);
 		d = hh(d, a, b, c, x[i+ 8], 11, -2022574463);
 		c = hh(c, d, a, b, x[i+11], 16,  1839030562);
@@ -599,7 +599,7 @@ hashes.md5=function(x, len) {
 		d = hh(d, a, b, c, x[i+12], 11, -421815835);
 		c = hh(c, d, a, b, x[i+15], 16,  530742520);
 		b = hh(b, c, d, a, x[i+ 2], 23, -995338651);
-		
+
 		a = ii(a, b, c, d, x[i+ 0], 6 , -198630844);
 		d = ii(d, a, b, c, x[i+ 7], 10,  1126891415);
 		c = ii(c, d, a, b, x[i+14], 15, -1416354905);
@@ -616,7 +616,7 @@ hashes.md5=function(x, len) {
 		d = ii(d, a, b, c, x[i+11], 10, -1120210379);
 		c = ii(c, d, a, b, x[i+ 2], 15,  718787259);
 		b = ii(b, c, d, a, x[i+ 9], 21, -343485551);
-		
+
 		a = add(a, olda);
 		b = add(b, oldb);
 		c = add(c, oldc);
@@ -692,7 +692,7 @@ hashes.sha512=function(x, len) {
 		this.h = h;
 		this.l = l;
 	}
-	
+
 	k=[
 	new int64(0x428a2f98, -685199838), new int64(0x71374491, 0x23ef65cd),
 	new int64(-1245643825, -330482897), new int64(-373957723, -2121671748),
@@ -745,7 +745,7 @@ hashes.sha512=function(x, len) {
 	new int64(-1694144372, 0x2b3e6c1f),
 	new int64(0x1f83d9ab, -79577749),
 	new int64(0x5be0cd19, 0x137e2179)];
-	
+
 	var T1 = new int64(0, 0),
 	T2 = new int64(0, 0),
 	a = new int64(0,0),
@@ -768,11 +768,11 @@ hashes.sha512=function(x, len) {
 	var W = new Array(80);
 	for(i=0; i<80; i++)
 		W[i] = new int64(0, 0);
-	
+
 	/* append padding to the source string. The format is described in the FIPS.*/
 	x[len >> 5] |= 0x80 << (24 - (len & 0x1f));
 	x[((len + 128 >> 10)<< 5) + 31] = len;
-	
+
 	for(i = 0; i<x.length; i+=32) {
 		int64copy(a, H[0]);
 		int64copy(b, H[1]);
@@ -782,12 +782,12 @@ hashes.sha512=function(x, len) {
 		int64copy(f, H[5]);
 		int64copy(g, H[6]);
 		int64copy(h, H[7]);
-		
+
 		for(j=0; j<16; j++) {
 			W[j].h = x[i + 2*j];
 			W[j].l = x[i + 2*j + 1];
 		}
-		
+
 		for(j=16; j<80; j++) {
 			/*sigma1*/
 			int64rrot(r1, W[j-2], 19);
@@ -801,36 +801,36 @@ hashes.sha512=function(x, len) {
 			int64shr(r3, W[j-15], 7);
 			s0.l = r1.l ^ r2.l ^ r3.l;
 			s0.h = r1.h ^ r2.h ^ r3.h;
-			
+
 			int64add4(W[j], s1, W[j-7], s0, W[j-16]);
 		}
-		
+
 		for(j = 0; j < 80; j++) {
 			/*Ch*/
 			Ch.l = (e.l & f.l) ^ (~e.l & g.l);
 			Ch.h = (e.h & f.h) ^ (~e.h & g.h);
-			
+
 			/*Sigma1*/
 			int64rrot(r1, e, 14);
 			int64rrot(r2, e, 18);
 			int64revrrot(r3, e, 9);
 			s1.l = r1.l ^ r2.l ^ r3.l;
 			s1.h = r1.h ^ r2.h ^ r3.h;
-			
+
 			/*Sigma0*/
 			int64rrot(r1, a, 28);
 			int64revrrot(r2, a, 2);
 			int64revrrot(r3, a, 7);
 			s0.l = r1.l ^ r2.l ^ r3.l;
 			s0.h = r1.h ^ r2.h ^ r3.h;
-			
+
 			/*Maj*/
 			Maj.l = (a.l & b.l) ^ (a.l & c.l) ^ (b.l & c.l);
 			Maj.h = (a.h & b.h) ^ (a.h & c.h) ^ (b.h & c.h);
-			
+
 			int64add5(T1, h, s1, Ch, k[j], W[j]);
 			int64add(T2, s0, Maj);
-			
+
 			int64copy(h, g);
 			int64copy(g, f);
 			int64copy(f, e);
@@ -849,7 +849,7 @@ hashes.sha512=function(x, len) {
 		int64add(H[6], H[6], g);
 		int64add(H[7], H[7], h);
 	}
-	
+
 	/*represent the hash as an array of 32-bit dwords*/
 	var hash = new Array(16);
 	for(i=0; i<8; i++)
