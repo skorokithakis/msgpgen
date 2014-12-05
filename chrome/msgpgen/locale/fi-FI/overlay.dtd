@@ -1,0 +1,13 @@
+<!ENTITY msgpgen.title "Hash Password Generator">
+<!ENTITY msgpgen.accesskey "H">
+<!ENTITY msgpgen.mpass "Hash PassGen">
+<!ENTITY msgpgen.options "Asetukset">
+<!ENTITY msgpgen.username "Käyttäjänimi">
+<!ENTITY msgpgen.email "Sähköposti">
+<!ENTITY msgpgen.masterPrompt "Pää Salasana?">
+<!ENTITY msgpgen.remember "Remember (for this session)">
+<!ENTITY msgpgen.rememberDefault "Remember (by default)">
+<!ENTITY msgpgen.disablePasswordRemember	"Estä Password Manager tallentaa salasanaa">
+<!ENTITY msgpgen.passwordLength	"Pituus syntyvän salasana">
+<!ENTITY msgpgen.algorithm	"Algoritmi käyttää">
+<!ENTITY msgpgen.verify	"Vahvista tuli salasana">

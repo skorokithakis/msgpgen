@@ -1,0 +1,13 @@
+<!ENTITY msgpgen.title "Hash Password Generator">
+<!ENTITY msgpgen.accesskey "H">
+<!ENTITY msgpgen.mpass "Hash PassGen">
+<!ENTITY msgpgen.options "選項">
+<!ENTITY msgpgen.username "使用者名稱">
+<!ENTITY msgpgen.email "電子郵件">
+<!ENTITY msgpgen.masterPrompt "主控密碼？">
+<!ENTITY msgpgen.remember "Remember (for this session)">
+<!ENTITY msgpgen.rememberDefault "Remember (by default)">
+<!ENTITY msgpgen.disablePasswordRemember	"防止密码管理存储的密码">
+<!ENTITY msgpgen.passwordLength	"长度的密码">
+<!ENTITY msgpgen.algorithm	"算法使用">
+<!ENTITY msgpgen.verify	"验证输入的密码">

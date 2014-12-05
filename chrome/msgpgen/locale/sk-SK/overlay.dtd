@@ -1,0 +1,13 @@
+<!ENTITY msgpgen.title "Hash Password Generator">
+<!ENTITY msgpgen.accesskey "H">
+<!ENTITY msgpgen.mpass "Hash PassGen">
+<!ENTITY msgpgen.options "Predvoľby">
+<!ENTITY msgpgen.username "Používateľské meno">
+<!ENTITY msgpgen.email "E-mail">
+<!ENTITY msgpgen.masterPrompt "Hlavné heslo?">
+<!ENTITY msgpgen.remember "Pamätať si (pre toto sedenie)">
+<!ENTITY msgpgen.rememberDefault "Pamätať si (prednastavené)">
+<!ENTITY msgpgen.disablePasswordRemember	"Zabrániť uloženie hesla správcu hesiel">
+<!ENTITY msgpgen.passwordLength	"Dĺžka vygenerované heslo">
+<!ENTITY msgpgen.algorithm	"Algoritmus na použitie">
+<!ENTITY msgpgen.verify	"Skontrolujte, či zadané heslo">

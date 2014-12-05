@@ -1,0 +1,13 @@
+<!ENTITY msgpgen.title "Hash Password Generator">
+<!ENTITY msgpgen.accesskey "H">
+<!ENTITY msgpgen.mpass "Hash PassGen">
+<!ENTITY msgpgen.options "Opcions">
+<!ENTITY msgpgen.username "Nom d&apos;usuari/a">
+<!ENTITY msgpgen.email "Correu-e">
+<!ENTITY msgpgen.masterPrompt "Contrasenya mestre?">
+<!ENTITY msgpgen.remember "Recorda (per a aquesta sessió)">
+<!ENTITY msgpgen.rememberDefault "Recorda (per defecte)">
+<!ENTITY msgpgen.disablePasswordRemember	"Prevenir administrador de contrasenyes d'emmagatzematge de la contrasenya">
+<!ENTITY msgpgen.passwordLength	"Longitud de la contrasenya generada">
+<!ENTITY msgpgen.algorithm	"Algorisme per a l'ús">
+<!ENTITY msgpgen.verify	"Verificar va entrar contrasenya">

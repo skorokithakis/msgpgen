@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Hash password generator - Custom algorithm help</title>
+</head>
+<body>
+The custom function hash algorithm lets you specify your own hash function to use.
+It will give the result of the last expression in the textbox.
+For example if you put
+<pre><code>digest(master+":"+domain,"md5","raw").slice(0,length);</code></pre>
+in the textbox, you will get the raw string hash of master:domain truncated to the required length.
+<h3>Availible functions</h3>
+<h4>digest(str, algorithm, encoding)</h4>
+This takes in three parameters: the string to hash, the hash algorithm and the output format.<br/>
+The hash algorithm can be any of "md2", "md5", "sha1", "sha256", "sha384", "sha512".<br/>
+The output format can be "hex", "b64", "raw" or any desired character set.<br/>
+<ul>
+	<li>"hex" will return the hex digest. This is what most tools use for output (e.g. md5sum, sha1sum etc.)</li>
+	<li>"b64" will encode the result as a base 64 string. This lets you fit more randomness in the password</li>
+	<li>"raw" will just return the raw character data. This lets you fit even more randomness in but it may include control characters</li>
+	<li>Any other value will be interpreted as a character set to encode the result with.</li>
+</ul>
+For example:
+<pre><code>digest("Hello there","sha256", "0123456789abcdefghijklmnopqrstuvwxyz").slice(0,10)</code></pre>
+will give the sha256 digest of "Hello there" encoded in base 36 truncated to 10 characters (which is "1y8j5vkf10" in case you were wondering)
+<h4>HMAC(key, data, algorithm, encoding)</h4>
+This function is like <code>digest</code> but with one fundamental difference.
+It takes in a key parameter and a data parameter and combines them with HMAC.
+<h4>getPref(prefName)</h4>
+This function gets any firefox preference and returns its current value.
+<h3>Availiable objects</h3>
+<h4>master</h4>
+This is the value of your master password
+<h4>domain</h4>
+This is the domain of the website for example if the website is "http://www.example.com/foo/bar.html", domain will be "example.com".
+<h4>fullLocation</h4>
+This is a location object mapping the page's location.
+<h4>length</h4>
+This is the desired password length.
+</body>
+</html>

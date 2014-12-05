@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://msgpgen/locale/overlay.dtd">
+<?xml-stylesheet href="chrome://browser/skin/" type="text/css"?>
+
+<dialog id="msgpgen-custom-algorithm"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		title="&msgpgen.title; - &msgpgen.options;"
+		buttons="accept, cancel, help, extra1"
+		buttonlabelextra1="Test"
+		onload="loadOptions()"
+		ondialogaccept="saveOptions()"
+		ondialoghelp="helpMe()"
+		ondialogextra1="testButtonClicked()"
+	>
+
+
+	<script>
+	<![CDATA[
+		var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].
+					 getService(Components.interfaces.mozIJSSubScriptLoader);
+		var pref=loader.loadSubScript('chrome://msgpgen/content/pref.js');
+		var errorLog=loader.loadSubScript('chrome://msgpgen/content/errorLog.js');
+		var hashes=loader.loadSubScript('chrome://msgpgen/content/hashes.js')(pref);
+
+		function loadOptions(){
+			var inputField=document.getElementById('functionbody');
+			inputField.value=pref.get("algorithmFunction")
+		}
+		function saveOptions(){
+			var inputField=document.getElementById('functionbody');
+			pref.set("string","algorithmFunction", inputField.value)
+		}
+		function helpMe(){
+			open("chrome://msgpgen/content/help-customFunction.html","msgpgenHelp", "width=640,height=480,chrome=yes")
+		}
+		function test(master,domain,length,fullLocation){
+			var testOutput=document.getElementById('testOutput');
+			var inputField=document.getElementById('functionbody');
+			try{
+				var output=hashes.safeEval(inputField.value,master,domain,length,fullLocation)
+				testOutput.value=String(output);
+			} catch (e) {
+				var errorString=e.name+" on line "+e.lineNumber+": "+e.message
+				testOutput.value=errorString;
+			}
+		}
+		function testButtonClicked(){
+			var master=document.getElementById('master').value;
+			var domain=document.getElementById('domain').value;
+			var length=document.getElementById('length').value;
+			var fullLocation={href:"http://www.example.com/login/",host:"www.example.com",
+								hostname:"www.example.com",hash:"",pathName:"/login/",
+								port:"",protocol:"http:",search:""};
+			document.getElementById('testContainer').style.visibility="visible"
+			test(master,domain,length)
+		}
+	]]>
+	</script>
+
+	<dialogheader title="Custom function" description="&msgpgen.title;"/>
+	<textbox id="functionbody" multiline="true" flex='1' rows="15" cols="70"/>
+	<grid style="visibility:collapse;" id="testContainer">
+		<columns>
+			<column/>
+			<column flex="1"/>
+		</columns>
+		<rows>
+			<row>
+				<label value="Master password"/>
+				<textbox id="master" value="master"/>
+			</row>
+			<row >
+				<label value="Domain name"/>
+				<textbox id="domain" value="example.com"/>
+			</row>
+			<row >
+				<label value="Length"/>
+				<textbox id="length" type="number" value="10"/>
+			</row>
+			<row >
+				<label value="Output"/>
+				<textbox id="testOutput"/>
+			</row>
+		</rows>
+	</grid>
+</dialog>

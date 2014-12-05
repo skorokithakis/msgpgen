@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM 'chrome://msgpgen/locale/overlay.dtd'>
+<?xml-stylesheet href='chrome://msgpgen/skin/overlay.css' type='text/css'?>
+<overlay id='msgpgenOverlay' xmlns='http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul'>
+<script src='chrome://msgpgen/content/fennec-main.js'></script>
+
+<popup id='contentAreaContextMenu'>
+	<menuitem id='msgpgen-context' hidden='true'
+		label='&msgpgen.title;...' accesskey='&msgpgen.accesskey;'
+		image='chrome://msgpgen/skin/icon-16.png' class='menuitem-iconic'
+	/>
+</popup>
+
+<keyset id='mainKeyset'>
+	<!-- The oncommand is needed so the event listener can be attached correctly-->
+	<key name='msgpgen-run-shortcut'
+		class="msgpgen"
+		modifiers='accel'
+		key='&msgpgen.accesskey;'
+		oncommand="void(0)"
+	/>
+
+</keyset>
+
+</overlay>

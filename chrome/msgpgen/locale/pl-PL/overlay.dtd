@@ -1,0 +1,13 @@
+<!ENTITY msgpgen.title "Hash Password Generator">
+<!ENTITY msgpgen.accesskey "H">
+<!ENTITY msgpgen.mpass "Hash PassGen">
+<!ENTITY msgpgen.options "Opcje">
+<!ENTITY msgpgen.username "Użytkownik">
+<!ENTITY msgpgen.email "Email">
+<!ENTITY msgpgen.masterPrompt "Hasło Głowne?">
+<!ENTITY msgpgen.remember "Remember (for this session)">
+<!ENTITY msgpgen.rememberDefault "Remember (by default)">
+<!ENTITY msgpgen.disablePasswordRemember	"Zapobieganie menedżer haseł przechowywania hasła">
+<!ENTITY msgpgen.passwordLength	"Długość wygenerowane hasło">
+<!ENTITY msgpgen.algorithm	"Algorytm do wykorzystania">
+<!ENTITY msgpgen.verify	"Sprawdź, czy wpisane hasło">

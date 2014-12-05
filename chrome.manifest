@@ -1,0 +1,37 @@
+content msgpgen chrome/msgpgen/content/
+skin msgpgen classic/1.0 chrome/msgpgen/skin/
+
+overlay chrome://browser/content/browser.xul			chrome://msgpgen/content/overlay.xul
+overlay chrome://navigator/content/navigator.xul		chrome://msgpgen/content/overlay.xul
+
+style   chrome://global/content/customizeToolbar.xul	chrome://msgpgen/skin/overlay.css
+
+locale msgpgen ca-AD chrome/msgpgen/locale/ca-AD/
+locale msgpgen da-DK chrome/msgpgen/locale/da-DK/
+locale msgpgen de-DE chrome/msgpgen/locale/de-DE/
+locale msgpgen en-GB chrome/msgpgen/locale/en-GB/
+locale msgpgen en-US chrome/msgpgen/locale/en-US/
+locale msgpgen es-AR chrome/msgpgen/locale/es-AR/
+locale msgpgen es-ES chrome/msgpgen/locale/es-ES/
+locale msgpgen fi-FI chrome/msgpgen/locale/fi-FI/
+locale msgpgen fr-FR chrome/msgpgen/locale/fr-FR/
+locale msgpgen hu-HU chrome/msgpgen/locale/hu-HU/
+locale msgpgen it-IT chrome/msgpgen/locale/it-IT/
+locale msgpgen ja-JP chrome/msgpgen/locale/ja-JP/
+locale msgpgen ko-KR chrome/msgpgen/locale/ko-KR/
+locale msgpgen ms-MY chrome/msgpgen/locale/ms-MY/
+locale msgpgen nb-NO chrome/msgpgen/locale/nb-NO/
+locale msgpgen nl-NL chrome/msgpgen/locale/nl-NL/
+locale msgpgen pl-PL chrome/msgpgen/locale/pl-PL/
+locale msgpgen pt-BR chrome/msgpgen/locale/pt-BR/
+locale msgpgen ru-RU chrome/msgpgen/locale/ru-RU/
+locale msgpgen sk-SK chrome/msgpgen/locale/sk-SK/
+locale msgpgen tr-TR chrome/msgpgen/locale/tr-TR/
+locale msgpgen uk-UA chrome/msgpgen/locale/uk-UA/
+locale msgpgen zh-CN chrome/msgpgen/locale/zh-CN/
+locale msgpgen zh-TW chrome/msgpgen/locale/zh-TW/
+
+override chrome://msgpgen/content/options.xul	chrome://msgpgen/content/fennecOptions.xul	application={a23983c0-fd0e-11dc-95ff-0800200c9a66}
+override chrome://msgpgen/content/overlay.xul	chrome://msgpgen/content/fennec-overlay.xul	application={a23983c0-fd0e-11dc-95ff-0800200c9a66}
+
+override chrome://msgpgen/skin/overlay.css		chrome://msgpgen/skin/seamonkeyOverlay.css	application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}

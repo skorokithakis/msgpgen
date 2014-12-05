@@ -1,0 +1,6 @@
+#tb-msgpgen {
+  list-style-image: url("chrome://msgpgen/skin/icon-30.png");
+}
+toolbar[iconsize="small"] #tb-msgpgen {
+  list-style-image: url("chrome://msgpgen/skin/icon-20.png");
+}

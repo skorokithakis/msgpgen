@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<window id="msgpgen-help" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+	<iframe src="chrome://msgpgen/locale/help-customFunction.html"
+			width="600" height="400" flex="1" type="content"/>
+</window>

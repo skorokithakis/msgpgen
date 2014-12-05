@@ -1,0 +1,13 @@
+<!ENTITY msgpgen.title "Hash Password Generator">
+<!ENTITY msgpgen.accesskey "H">
+<!ENTITY msgpgen.mpass "Hash PassGen">
+<!ENTITY msgpgen.options "オプション">
+<!ENTITY msgpgen.username "ユーザー名">
+<!ENTITY msgpgen.email "Email">
+<!ENTITY msgpgen.masterPrompt "マスターパスワード?">
+<!ENTITY msgpgen.remember "Remember (for this session)">
+<!ENTITY msgpgen.rememberDefault "Remember (by default)">
+<!ENTITY msgpgen.disablePasswordRemember	"パスワードを保存するパスワードマネージャを防ぐ">
+<!ENTITY msgpgen.passwordLength	"長さは、生成されたパスワードの">
+<!ENTITY msgpgen.algorithm	"アルゴリズムを使用する">
+<!ENTITY msgpgen.verify	"いることを確認パスワードを入力する">

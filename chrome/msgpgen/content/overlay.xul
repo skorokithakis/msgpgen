@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM 'chrome://msgpgen/locale/overlay.dtd'>
+<?xml-stylesheet href='chrome://msgpgen/skin/overlay.css' type='text/css'?>
+<overlay id='msgpgenOverlay' xmlns='http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul'>
+<script src='chrome://msgpgen/content/msgpgen.js'></script>
+
+<toolbarpalette id='BrowserToolbarPalette'>
+	<toolbarbutton id='tb-msgpgen'
+		class='toolbarbutton-1 msgpgen'
+		label='&msgpgen.mpass;' tooltiptext='&msgpgen.mpass; (Ctrl+Alt+&msgpgen.accesskey;)'
+		insertbefore="print-button"
+		context='_child'
+	>
+		<menupopup id='msgpgenButtonContextMenu'>
+			<menuitem id='msgpgen-clear'
+				label='Clear Password'
+				image='chrome://msgpgen/skin/icon-16.png'
+				class='menuitem-iconic msgpgen'
+				name='msgpgen-forget-menu'
+			/>
+			<menuitem id='msgpgen-prompt'
+				label='Custom Password Prompt...'
+				image='chrome://msgpgen/skin/icon-16.png'
+				class='menuitem-iconic msgpgen'
+				name='msgpgen-prompt-menu'
+			 />
+		</menupopup>
+	</toolbarbutton>
+</toolbarpalette>
+
+<popup id='contentAreaContextMenu'>
+	<menuitem id='msgpgen-context' hidden='true'
+		label='&msgpgen.title;...' accesskey='&msgpgen.accesskey;'
+		image='chrome://msgpgen/skin/icon-16.png' class='menuitem-iconic msgpgen'
+	/>
+</popup>
+
+	
+<keyset id='mainKeyset'>
+	<!-- The oncommand is needed so the event listener can be attached correctly-->
+	<key name='msgpgen-run-shortcut'
+		class="msgpgen"
+		modifiers='alt control'
+		key='&msgpgen.accesskey;'
+		oncommand="void(0)"
+	/>
+	<key name='msgpgen-prompt-shortcut'
+		class="msgpgen"
+		modifiers='control alt shift'
+		key='&msgpgen.accesskey;'
+		oncommand="void(0)"
+	/>
+	<key name='msgpgen-forget-shortcut'
+		class="msgpgen"
+		modifiers='meta alt'
+		key='&msgpgen.accesskey;'
+		oncommand="void(0)"
+	/>
+</keyset>
+
+</overlay>

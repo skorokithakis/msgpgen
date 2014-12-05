@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay SYSTEM "chrome://msgpgen/locale/overlay.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<dialog id="msgpgen-prompt-master"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="&msgpgen.title;"
+        buttons="accept, cancel"
+        onload="promptLoad()"
+        ondialogaccept="promptAccept()" >
+
+	<script type='application/x-javascript' src='chrome://msgpgen/content/checkpwd.js'></script>
+
+	<script>
+	<![CDATA[
+	function dgEBI(id){
+		return document.getElementById(id)
+	}
+	function promptLoad (event) {
+		dgEBI('remember').checked=window.arguments[0].remember;
+		dgEBI('master-pw').focus();
+	}
+
+	function promptAccept (event) {
+		window.arguments[0].masterPw=dgEBI('master-pw').value;
+		window.arguments[0].remember=dgEBI('remember').checked;
+		return true;
+	}
+	]]>
+	</script>
+
+	<groupbox align="center" orient="horizontal">
+		<vbox>
+			<text value="&msgpgen.masterPrompt;" style="font-weight: bold; font-size: x-large;" />
+			<textbox type='password' id='master-pw' style='-moz-appearance: none; background-position:right; background-repeat:no-repeat' oninput="checkPwd(this)" />
+			<checkbox id='remember' label='&msgpgen.remember;' />
+		</vbox>
+		<spring flex="1" style='padding-left: 9px;' />
+		<image src="chrome://msgpgen/skin/icon-32.png" />
+	</groupbox>
+</dialog>  

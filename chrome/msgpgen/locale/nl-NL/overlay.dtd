@@ -1,0 +1,13 @@
+<!ENTITY msgpgen.title "Hash Password Generator">
+<!ENTITY msgpgen.accesskey "H">
+<!ENTITY msgpgen.mpass "Hash PassGen">
+<!ENTITY msgpgen.options "Opties">
+<!ENTITY msgpgen.username "Gebruikersnaam">
+<!ENTITY msgpgen.email "E-mailadres">
+<!ENTITY msgpgen.masterPrompt "Hoofdwachtwoord?">
+<!ENTITY msgpgen.remember "Onthouden (voor deze sessie)">
+<!ENTITY msgpgen.rememberDefault "Onthouden (standaard)">
+<!ENTITY msgpgen.disablePasswordRemember	"Voorkom password manager wachtwoord opslaan">
+<!ENTITY msgpgen.passwordLength	"Lengte van het gegenereerde wachtwoord">
+<!ENTITY msgpgen.algorithm	"Algoritme te gebruiken">
+<!ENTITY msgpgen.verify	"Controleer ingevoerde wachtwoord">

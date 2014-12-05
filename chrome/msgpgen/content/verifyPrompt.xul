@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay SYSTEM "chrome://msgpgen/locale/overlay.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<dialog id="msgpgen-prompt-master-hash"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	title="&msgpgen.title;"
+	buttons="accept, cancel"
+	ondialogaccept="hashPromptAccept()"
+	>
+	<script type='application/x-javascript' src='chrome://msgpgen/content/fasthash.js'></script>
+	<script>
+	<![CDATA[
+	function entropyOf(passwd){
+		function log2(number){
+			return Math.log(number)/Math.LN2;
+		}
+		var symbols = passwd.match(/[-!"#$%&'()*+,./:;<=>?@[\\\]^_`{|}~]/g);
+		var upper = passwd.match(/[A-Z]/g);
+		var lower = passwd.match(/[a-z]/g);
+		var numbers = passwd.match(/[0-9]/g);
+		var passwdBase = 0;
+		passwdBase += upper!=null ? 26 : 0;
+		passwdBase += lower!=null ? 26 : 0;
+		passwdBase += numbers!=null ? 10 : 0;
+		passwdBase += symbols!=null ? 32 : 0;
+		bitsPerChar = log2(passwdBase);
+		totalBits = passwd.length * bitsPerChar;
+		return totalBits;
+	}
+	function checkMatch(textboxElement){
+		var field1 = document.getElementById('master-pw')
+		var master1 = document.getElementById('master-pw').value;
+		var master2 = textboxElement.value;
+		var colour;
+		if(master1.substring(0,master2.length)==master2){
+			colour = master1 == master2 ? 'lime' : 'yellow';
+		}
+		else {colour='red';}
+		textboxElement.style.backgroundColor = colour;
+	}
+	function checkStrength(textboxElement){
+		colours = new Array('red','orange','gold','yellow','#ccff00','lime','#00ff7f')
+		var passwd = textboxElement.value;
+		var strength = passwd ? entropyOf(passwd) : 0;
+		var colourIndex = 0;
+		strength>24 ? colourIndex++ : false;
+		strength>40 ? colourIndex++ : false;
+		strength>48 ? colourIndex++ : false;
+		strength>64 ? colourIndex++ : false;
+		strength>72 ? colourIndex++ : false;
+		strength>96 ? colourIndex++ : false;
+		textboxElement.style.backgroundColor=colours[colourIndex];
+	}
+		
+	function hashPromptAccept () {
+		var pref = Components.classes['@mozilla.org/preferences-service;1'].
+			getService(Components.interfaces.nsIPrefBranch);
+		var masterPass = document.getElementById('master-pw').value;
+		var verifyPass = document.getElementById('master-pw-verify').value;
+		if (masterPass == verifyPass){
+			pref.setCharPref('msgpgen.verifyHash', masterPass ? fastHash(masterPass) : ""); 
+			return true;
+		}
+		else { return false; }
+	}
+	
+	]]>
+	</script>
+	<groupbox align="center" orient="horizontal">
+		<vbox>
+			<text value="&msgpgen.masterPrompt;" style="font-weight: bold; font-size: x-large;" />
+			<textbox type='password' id='master-pw' style='-moz-appearance: none;' oninput='checkStrength(this)' />
+			<textbox type='password' id='master-pw-verify' style='-moz-appearance: none;' oninput='checkMatch(this)'/>
+		</vbox>
+		<spring flex="1" style='padding-left: 9px;' />
+		<image src="chrome://msgpgen/skin/em-icon.png" />
+	</groupbox>
+
+	<spacer flex="1" />
+</dialog>

@@ -1,0 +1,13 @@
+<!ENTITY msgpgen.title "Hash Password Generator">
+<!ENTITY msgpgen.accesskey "H">
+<!ENTITY msgpgen.mpass "Hash PassGen">
+<!ENTITY msgpgen.options "Valg">
+<!ENTITY msgpgen.username "Brukernavn">
+<!ENTITY msgpgen.email "E-post">
+<!ENTITY msgpgen.masterPrompt "Sjefspassord?">
+<!ENTITY msgpgen.remember "Remember (for this session)">
+<!ENTITY msgpgen.rememberDefault "Remember (by default)">
+<!ENTITY msgpgen.disablePasswordRemember	"Forhindre passord manager lagre passord">
+<!ENTITY msgpgen.passwordLength	"Lengde av genererte passordet">
+<!ENTITY msgpgen.algorithm	"Algoritme for å bruke">
+<!ENTITY msgpgen.verify	"Bekreft inn passord">

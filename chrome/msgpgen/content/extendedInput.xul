@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay SYSTEM "chrome://msgpgen/locale/overlay.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<dialog id="msgpgen-prompt-master"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		title="&msgpgen.title;"
+		buttons="accept, cancel, help"
+		onload="promptLoad()"
+		ondialogaccept="promptAccept()"
+	>
+	<script type='application/x-javascript' src='chrome://msgpgen/content/fasthash.js'></script>
+	<script type='application/x-javascript' src='chrome://msgpgen/content/checkpwd.js'></script>
+	<script>
+	<![CDATA[
+	function dgEBI(id){
+		return document.getElementById(id)
+	}
+	var prefService = Components.classes['@mozilla.org/preferences-service;1'].
+			getService(Components.interfaces.nsIPrefService).getBranch('msgpgen.');
+
+	function promptLoad (event) {
+		dgEBI('masterPasswd').focus();
+		dgEBI('passwordLength').value=prefService.getIntPref("passwordLength")
+		dgEBI('algorithm').value=prefService.getCharPref('algorithm')
+	}
+
+	function promptAccept (event) {
+		window.arguments[0].masterPw=dgEBI('masterPasswd').value;
+		window.arguments[0].algorithm=dgEBI('algorithm').value;
+		window.arguments[0].length=dgEBI('passwordLength').value
+		return true;
+	}
+	]]>
+	</script>
+
+	<vbox>
+		<text value="&msgpgen.title;" style="font-weight: bold; font-size: x-large;" />
+		<label value="&msgpgen.passwordLength;" control="passwordLength" />
+		<textbox id="passwordLength" type='number' min='3'/>
+		<label value="&msgpgen.algorithm;"/>
+		<menulist label="&msgpgen.algorithm;" id="algorithm">
+			<menupopup>
+				<menuitem label="Magic Password" value='mpwgen'/>
+				<menuitem label="SuperGenPass" value='sgp'/>
+				<menuitem label="PwdHash" value='pwdHash'/>
+				<menuitem label="&msgpgen.mpass;" value='hpg'/>
+				<menuitem label="Custom" value='custom'
+						oncommand="openDialog('chrome://msgpgen/content/customOptions.xul', '', null)"/>
+				<menuitem label="Custom function" value='customAlgorithm'
+						oncommand="openDialog('chrome://msgpgen/content/customFunction.xul', '', null)"/>
+			</menupopup>
+		</menulist>
+		<label value="&msgpgen.masterPrompt;" control="masterPasswd" style="font-size: large;"/>
+		<textbox type='password' id='masterPasswd' style='-moz-appearance: none; background-position: right; background-repeat: repeat-y' oninput="checkPwd(this)" />
+	</vbox>
+</dialog>

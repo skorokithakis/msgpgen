@@ -1,0 +1,13 @@
+<!ENTITY msgpgen.title "Hash Password Generator">
+<!ENTITY msgpgen.accesskey "H">
+<!ENTITY msgpgen.mpass "Hash PassGen">
+<!ENTITY msgpgen.options "Beállítások">
+<!ENTITY msgpgen.username "Felhasználónév">
+<!ENTITY msgpgen.email "E-mail">
+<!ENTITY msgpgen.masterPrompt "Adja meg a Mesterjelszót">
+<!ENTITY msgpgen.remember "Megjegyzés (erre a munkamenetre)">
+<!ENTITY msgpgen.rememberDefault "Megjegyzés (mindig)">
+<!ENTITY msgpgen.disablePasswordRemember	"Akadályozzuk meg Password Manager tárolására jelszó">
+<!ENTITY msgpgen.passwordLength	"Hossza a generált jelszó">
+<!ENTITY msgpgen.algorithm	"Algoritmust használja">
+<!ENTITY msgpgen.verify	"Győződjön meg arról, be jelszó">

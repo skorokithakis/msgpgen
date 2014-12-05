@@ -1,0 +1,13 @@
+<!ENTITY msgpgen.title "Hash Password Generator">
+<!ENTITY msgpgen.accesskey "H">
+<!ENTITY msgpgen.mpass "Hash PassGen">
+<!ENTITY msgpgen.options "선택사항">
+<!ENTITY msgpgen.username "사용자명">
+<!ENTITY msgpgen.email "이메일">
+<!ENTITY msgpgen.masterPrompt "마스터 패스워드?">
+<!ENTITY msgpgen.remember "기억하기(이번 세션 동안)">
+<!ENTITY msgpgen.rememberDefault "기억하기(기본값)">
+<!ENTITY msgpgen.disablePasswordRemember	"비밀 번호를 관리자 암호를 저장 방지">
+<!ENTITY msgpgen.passwordLength	"길이 생성된 비밀 번호">
+<!ENTITY msgpgen.algorithm	"알고리즘을 사용">
+<!ENTITY msgpgen.verify	"비밀 번호를 입력 확인">

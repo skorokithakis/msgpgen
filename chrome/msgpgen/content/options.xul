@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://msgpgen/locale/overlay.dtd">
+
+<prefwindow id="msgpgen-options" title="&msgpgen.title; - &msgpgen.options;"
+			xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+			buttons="accept, cancel, help"
+			>
+	<prefpane id="pane1">
+		<preferences>
+			<preference id="username" name="msgpgen.username" type="string"/>
+			<preference id="email" name="msgpgen.email" type="string"/>
+			<preference id="length" name="msgpgen.passwordLength" type="int"/>
+			<preference id="algorithm" name="msgpgen.algorithm" type="string"/>
+			<preference id="autoCompOff" name="msgpgen.autoCompOff" type="bool"/>
+			<preference id="rememberDefault" name="msgpgen.rememberDefault" type="bool"/>
+			<preference id="autoFill" name="msgpgen.fillOnLoad" type="bool"/>
+		</preferences>
+		<dialogheader title="&msgpgen.title;" description="&msgpgen.options;"/>
+
+		<label value="&msgpgen.username;" control="msgpgen-username"/>
+		<textbox id="msgpgen-username" preference="username" />
+
+		<label value="&msgpgen.email;" control="msgpgen-email" />
+		<textbox id="msgpgen-email" preference="email" />
+
+		<label value="&msgpgen.passwordLength;" control="msgpgen-passwordLength" />
+		<textbox id="msgpgen-passwordLength" preference="length" type='number' min='3'/>
+
+		<label value="&msgpgen.algorithm;"/>
+		<menulist label="SuperGenPass" id="msgpgen-algorithm" preference="algorithm"  >
+			<menupopup>
+				<menuitem label="Magic Password" value='mpwgen'/>
+				<menuitem label="SuperGenPass" value='sgp'/>
+				<menuitem label="PwdHash" value='pwdHash'/>
+				<menuitem label="&msgpgen.mpass;" value='hpg'/>
+				<menuitem label="Custom" value='custom'
+						oncommand="document.documentElement.openSubDialog
+						('customOptions.xul', '', null)"/>
+				<menuitem label="Custom function" value='customAlgorithm'
+						oncommand="document.documentElement.openSubDialog
+						('customFunction.xul', '', null)"/>
+			</menupopup>
+		</menulist>
+
+		<button label="Verify Password"
+				oncommand="document.documentElement.openSubDialog('verifyPrompt.xul', '', null)"/>
+
+		<checkbox id='msgpgen-autoFill'
+				preference="autoFill"
+				label="Automatically fill forms when page loads"/>
+	</prefpane>
+</prefwindow>
