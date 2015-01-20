@@ -1,0 +1,78 @@
+<html>
+<head>
+<link rel="icon" href="favicon.ico"/>
+<script src="bookmarklet-min.js"></script>
+<script>
+function dgEBI(id){
+	return document.getElementById(id);
+}
+function onLoad(event){
+	dgEBI("result").href="javascript:"+hpg.sourceCode+"()"
+	dgEBI("length").addEventListener("keypress", lengthKeypress, true);
+}
+function generateBookmarklet(){
+	var resultElement=document.getElementById("result")
+	var resultString="javascript:"+hpg.sourceCode+"({";
+	var master=dgEBI("master").value;
+	var master2=dgEBI("master2").value;
+	var username=dgEBI("username").value;
+	var email=dgEBI("email").value;
+	var length=dgEBI("length").value;
+	var algorithm=dgEBI("algorithm").value;
+
+	if(master&&master==master2){
+		resultString+='master:"'+master+'",';
+	}
+	email?resultString+='email:"'+email+'",':false;
+	username?resultString+='username:"'+username+'",':false;
+	length?resultString+='passwordLength:'+length+',':false;
+	algorithm?resultString+='algorithm:"'+algorithm+'",':false;
+
+
+	resultString +="})"
+	document.getElementById("result").href=resultString;
+}
+function lengthKeypress(event){
+	if(event.charCode && event.charCode < 48 || 57 < event.charCode){
+		event.preventDefault();
+	}
+}
+</script>
+<title>Hash Password Generator bookmarklet</title>
+</head>
+<body onload="onLoad.apply(this,arguments)">
+<form action="#" onsubmit="generateBookmarklet(); return false;">
+<p>
+<label for="username">Username</label><br/>
+<input id="username" name="username" size="25"/>
+</p>
+<p>
+<label for="email">Email Address</label><br/>
+<input id="email" name="email" size="25"/>
+</p>
+<p>
+<label for="length">Password Length</label><br/>
+<input id="length" name="length" size="2"/>
+</p>
+<p>
+<label for="algorithm">Algorithm</label><br/>
+<select id="algorithm" name="algorithm">
+	<option value="hpg">HashPassGen</option>
+	<option value="sgp">SuperGenPass</option>
+	<option value="pwdhash">PwdHash</option>
+	<option value="mpwgen">Magic password</option>
+</select>
+</p>
+
+<p>
+<label for="master">Master Password</label><br/>
+<input id="master" name="master" type="password" size="25"/><br/>
+<label for="master">Master Password (confirm)</label><br/>
+<input id="master2" name="master2" type="password" size="25"/>
+</p>
+<input type="Submit" value="Regenerate">
+</form>
+<a id="result" href="#">HashPassGen</a>
+<textarea id="out"></textarea>
+</body>
+
